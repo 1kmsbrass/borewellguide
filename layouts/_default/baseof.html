@@ -7,6 +7,9 @@
   <title>{{ if .IsHome }}{{ .Site.Title }} — Practical Borewell Planning{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <link rel="canonical" href="{{ .Permalink }}">
+  {{ if and .IsPage (eq .Section "guides") }}
+  <script src="{{ "js/toc.js" | relURL }}" defer></script>
+  {{ end }}
 </head>
 <body>
   {{ partial "header.html" . }}
