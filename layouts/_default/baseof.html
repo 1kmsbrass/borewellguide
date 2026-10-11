@@ -9,6 +9,9 @@
   <link rel="canonical" href="{{ .Permalink }}">
   {{ if and .IsPage (eq .Section "guides") }}
   <script src="{{ "js/toc.js" | relURL }}" defer></script>
+  {{ if eq .File.ContentBaseName "how-is-borewell-drilling-cost-calculated-india" }}
+  <script src="{{ "js/borewell-calculator.js" | relURL }}" defer></script>
+  {{ end }}
   {{ end }}
 </head>
 <body>
