@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  <title>{{ if .IsHome }}{{ .Site.Title }} — Practical Borewell Planning{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>{{ .Site.Title }}</strong></p>
+      <p>Independent planning information. Site conditions and results vary.</p>
+    </div>
+  </footer>
+</body>
+</html>
