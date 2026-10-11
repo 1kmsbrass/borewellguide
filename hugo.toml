@@ -1,0 +1,9 @@
+baseURL = "https://example.org/"
+languageCode = "en-IN"
+title = "Borewell Guide"
+enableRobotsTXT = true
+
+[params]
+  description = "Practical information for planning a borewell in India."
+  siteName = "Borewell Guide"
+  contactText = "Planning a borewell? Speak with local, experienced professionals before deciding."
