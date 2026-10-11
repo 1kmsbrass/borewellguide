@@ -6,41 +6,34 @@
 
   const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
   const items = links.map((link) => {
-    const id = decodeURIComponent(link.hash.slice(1));
+    const rawId = link.getAttribute("href").slice(1);
+    let id = rawId;
+    try { id = decodeURIComponent(rawId); } catch (_) {}
     const heading = document.getElementById(id);
     return heading ? { link, heading } : null;
   }).filter(Boolean);
 
   if (!items.length) return;
 
-  const setActive = (activeItem) => {
+  function setActive(activeItem) {
     items.forEach(({ link, heading }) => {
       const active = heading === activeItem;
       link.classList.toggle("is-active", active);
-      if (active) {
-        link.setAttribute("aria-current", "location");
-      } else {
-        link.removeAttribute("aria-current");
-      }
+      if (active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
     });
-  };
+  }
 
-  if ("IntersectionObserver" in window) {
-    const visible = new Set();
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) visible.add(entry.target);
-        else visible.delete(entry.target);
-      });
+  function updateActiveFromScroll() {
+    const activationLine = 150;
+    let active = items[0];
 
-      const firstVisible = items.find(({ heading }) => visible.has(heading));
-      if (firstVisible) setActive(firstVisible.heading);
-    }, {
-      rootMargin: "-12% 0px -72% 0px",
-      threshold: 0
-    });
+    for (const item of items) {
+      if (item.heading.getBoundingClientRect().top <= activationLine) active = item;
+      else break;
+    }
 
-    items.forEach(({ heading }) => observer.observe(heading));
+    setActive(active.heading);
   }
 
   toc.addEventListener("click", (event) => {
@@ -50,7 +43,17 @@
     if (item) setActive(item.heading);
   });
 
-  const currentHash = decodeURIComponent(window.location.hash.slice(1));
-  const initialItem = items.find(({ heading }) => heading.id === currentHash);
-  if (initialItem) setActive(initialItem.heading);
+  const hash = window.location.hash.slice(1);
+  let initial = null;
+  if (hash) {
+    let id = hash;
+    try { id = decodeURIComponent(hash); } catch (_) {}
+    initial = items.find(({ heading }) => heading.id === id);
+  }
+
+  if (initial) setActive(initial.heading);
+  else updateActiveFromScroll();
+
+  window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+  window.addEventListener("resize", updateActiveFromScroll, { passive: true });
 })();
