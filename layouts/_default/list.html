@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="container article">
+  <h1>{{ .Title }}</h1>
+  <div>{{ .Content }}</div>
+  {{ $pages := .RegularPages }}
+  {{ if $pages }}
+  <ul class="topic-list">
+    {{ range $pages.ByTitle }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }}<p>{{ . }}</p>{{ end }}<small>Last updated: {{ .Lastmod.Format "2 January 2006" }}</small></li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  <p>No guides are published here yet. We will add material as it is researched and checked.</p>
+  {{ end }}
+</section>
+{{ end }}
