@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">How borewell drilling cost is calculated in India</title>
+<desc id="desc">An illustrated borewell cross-section with depth and diameter labels, the formula depth multiplied by rate per foot, a worked hypothetical example, and a checklist of possible additional costs.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dff3ff"/><stop offset="1" stop-color="#f8fbff"/></linearGradient>
+  <linearGradient id="earth" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a96e43"/><stop offset="1" stop-color="#63452f"/></linearGradient>
+  <linearGradient id="well" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#9eb4c2"/><stop offset=".5" stop-color="#edf5fa"/><stop offset="1" stop-color="#647e90"/></linearGradient>
+  <style>
+    .ink{fill:#172c3c;font-family:Arial,Helvetica,sans-serif}.muted{fill:#40596a;font-family:Arial,Helvetica,sans-serif}.heading{font-size:34px;font-weight:700}.sub{font-size:18px}.label{font-size:17px;font-weight:700}.body{font-size:16px}.small{font-size:14px}
+  </style>
+</defs>
+<rect width="1200" height="820" rx="24" fill="#f6f9f5"/>
+<rect x="0" y="0" width="1200" height="112" rx="24" fill="url(#sky)"/>
+<rect x="0" y="84" width="1200" height="28" fill="#dff3ff"/>
+<text x="42" y="50" class="ink heading">Borewell drilling cost: how the calculation works</text>
+<text x="44" y="82" class="muted sub">Understand depth, rate per foot and costs that may be separate</text>
+
+<!-- left drilling illustration -->
+<rect x="34" y="132" width="420" height="490" rx="18" fill="#fff" stroke="#d6e1e5" stroke-width="2"/>
+<rect x="50" y="148" width="388" height="90" rx="12" fill="#e8f5ff"/>
+<circle cx="86" cy="180" r="16" fill="#f5c64a"/><circle cx="106" cy="173" r="22" fill="#fff" opacity=".9"/><circle cx="130" cy="184" r="14" fill="#fff" opacity=".9"/>
+<path d="M50 226 Q110 211 168 226 T286 226 T438 226 V238 H50Z" fill="#6e9d57"/>
+<rect x="50" y="238" width="388" height="110" fill="#c89b6a"/>
+<path d="M50 268 L438 268 M50 308 L438 308 M50 337 L438 337" stroke="#a9794d" stroke-width="2" opacity=".65"/>
+<rect x="50" y="348" width="388" height="126" fill="#8b8073"/>
+<path d="M50 382 L438 382 M50 422 L438 422 M50 457 L438 457" stroke="#6e665e" stroke-width="2" opacity=".65"/>
+<rect x="50" y="474" width="388" height="132" fill="#b8dce6"/>
+<path d="M50 500 Q80 488 110 500 T170 500 T230 500 T290 500 T350 500 T438 500" stroke="#4a9fc0" stroke-width="3" fill="none"/>
+<!-- rig -->
+<rect x="110" y="190" width="130" height="35" rx="7" fill="#f2b72f" stroke="#815e14" stroke-width="2"/>
+<rect x="124" y="176" width="48" height="20" rx="4" fill="#ffd96a" stroke="#815e14" stroke-width="2"/>
+<rect x="132" y="179" width="19" height="12" fill="#c8e9f8"/>
+<circle cx="137" cy="226" r="12" fill="#293945"/><circle cx="137" cy="226" r="5" fill="#aebec5"/>
+<circle cx="211" cy="226" r="12" fill="#293945"/><circle cx="211" cy="226" r="5" fill="#aebec5"/>
+<path d="M205 190 L246 150 L257 150 L240 222 L224 222Z" fill="#e5a91e" stroke="#815e14" stroke-width="2"/>
+<path d="M250 150 L250 474" stroke="#425c6d" stroke-width="9"/>
+<rect x="238" y="238" width="24" height="368" rx="4" fill="url(#well)" stroke="#385a6d" stroke-width="2"/>
+<rect x="244" y="348" width="12" height="258" fill="#d8f4fa"/>
+<path d="M250 260 L250 583" stroke="#168bb8" stroke-width="5" stroke-dasharray="12 10"/>
+<path d="M286 252 L286 594 M278 260 L286 250 L294 260 M278 586 L286 596 L294 586" stroke="#fff" stroke-width="4" fill="none"/>
+<text x="302" y="388" class="ink label">Depth</text><text x="302" y="410" class="ink body">(in feet)</text>
+<path d="M219 548 L183 548 M190 540 L182 548 L190 556" stroke="#fff" stroke-width="3" fill="none"/>
+<path d="M265 548 L300 548 M292 540 L300 548 L292 556" stroke="#fff" stroke-width="3" fill="none"/>
+<text x="77" y="576" class="ink label">Diameter</text><text x="77" y="597" class="ink body">(in inches)</text>
+<text x="66" y="258" fill="#fff" class="label">Topsoil</text><text x="66" y="375" fill="#fff" class="label">Soil / rock layers</text><text x="66" y="520" class="ink label">Possible water-bearing</text><text x="66" y="541" class="ink label">fractures</text>
+<text x="54" y="645" class="muted small">Illustration only — not a site survey or depth recommendation.</text>
+
+<!-- formula panel -->
+<rect x="478" y="132" width="688" height="188" rx="18" fill="#fff" stroke="#d6e1e5" stroke-width="2"/>
+<text x="508" y="174" class="ink heading" font-size="27">1. Calculate the basic drilling charge</text>
+<rect x="506" y="194" width="632" height="58" rx="12" fill="#e7f4e9"/>
+<text x="822" y="230" text-anchor="middle" class="ink" font-size="23" font-weight="700">Depth (ft) × Rate per foot (₹/ft)</text>
+<text x="508" y="282" class="muted body">Example: 500 ft × ₹120/ft =</text><text x="807" y="282" fill="#146b43" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700">₹60,000</text>
+<text x="508" y="305" class="muted small">Hypothetical arithmetic example, not a current market quote.</text>
+
+<!-- costs panel -->
+<rect x="478" y="340" width="688" height="282" rx="18" fill="#fff" stroke="#d6e1e5" stroke-width="2"/>
+<text x="508" y="381" class="ink heading" font-size="27">2. Check what is not included</text>
+<text x="508" y="409" class="muted body">The final project total can include separate items. Check the written quote.</text>
+<g>
+  <rect x="506" y="430" width="194" height="72" rx="12" fill="#e8f2ff"/><circle cx="535" cy="453" r="13" fill="#2776bf"/><path d="M529 453h12M535 447v12" stroke="#fff" stroke-width="2"/><text x="526" y="480" class="ink label">Casing pipes</text>
+  <rect x="714" y="430" width="194" height="72" rx="12" fill="#fff2d6"/><circle cx="743" cy="453" r="13" fill="#d38b13"/><path d="M736 457h14l-2-8h-10z M739 449v-4h7v4" stroke="#fff" stroke-width="2" fill="none"/><text x="734" y="480" class="ink label">Rig transport</text>
+  <rect x="922" y="430" width="216" height="72" rx="12" fill="#e2f5f1"/><circle cx="951" cy="453" r="13" fill="#168c7c"/><path d="M951 443 C946 450 944 453 944 457a7 7 0 0 0 14 0c0-4-2-7-7-14Z" fill="#fff"/><text x="942" y="480" class="ink label">Flushing / cleaning</text>
+  <rect x="506" y="516" width="300" height="72" rx="12" fill="#f0eaff"/><circle cx="535" cy="539" r="13" fill="#7450bd"/><path d="M529 535h12v9h-12z M532 531v4 M538 531v4" stroke="#fff" stroke-width="2" fill="none"/><text x="526" y="566" class="ink label">Pump & installation</text>
+  <rect x="820" y="516" width="318" height="72" rx="12" fill="#ffe9e6"/><circle cx="849" cy="539" r="13" fill="#c75b45"/><path d="M842 539h14M849 532v14" stroke="#fff" stroke-width="2"/><text x="840" y="566" class="ink label">Other site expenses</text>
+</g>
+<text x="508" y="607" class="muted small">Some items may already be included; do not double-count them.</text>
+
+<!-- bottom checklist -->
+<rect x="34" y="674" width="1132" height="110" rx="18" fill="#172c3c"/>
+<text x="62" y="714" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700">Before you book</text>
+<text x="62" y="745" fill="#e6f1f5" font-family="Arial,Helvetica,sans-serif" font-size="17">✓ Confirm rate slabs   ✓ Confirm diameter and depth measurement   ✓ List included / extra work   ✓ Get terms in writing</text>
+<text x="62" y="769" fill="#c5d8df" font-family="Arial,Helvetica,sans-serif" font-size="14">A drilling rate does not predict whether water will be found or determine the right depth for your property.</text>
+</svg>
