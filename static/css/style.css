@@ -24,6 +24,18 @@ h2{font-size:clamp(1.45rem,3vw,2rem);line-height:1.25;letter-spacing:-.02em}
 .topic-list{padding-left:24px}.topic-list li{margin:0 0 16px}.topic-list p{margin:4px 0;color:#344740}
 .article-layout{display:grid;grid-template-columns:minmax(0, min(720px, 1fr)) 230px;gap:48px;align-items:start;padding-top:44px;padding-bottom:72px}
 .article{min-width:0}
+.article-infographic{margin:0 0 26px}
+.article-infographic a{display:block}
+.article-infographic img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+.article-infographic figcaption{margin-top:7px;color:var(--muted);font-size:.85rem}
+.toc-resources{margin-top:22px;padding-top:16px;border-top:1px solid #cbd8ce}
+.toc-resources .toc-title{margin-bottom:10px}
+.resource-link{display:block;padding:11px 0;border-top:1px solid #d5e0d8;color:#173d32;text-decoration:none}
+.resource-link strong,.resource-link span{display:block}
+.resource-link strong{font-size:.92rem}
+.resource-link span{margin-top:3px;color:#405650;font-size:.82rem;line-height:1.4}
+.resource-link:hover strong{text-decoration:underline}
+
 .article h1{font-size:clamp(2.2rem,4vw,3.25rem);overflow-wrap:anywhere}
 .meta{font-size:.9rem;color:#344740}
 .article-content{margin-top:28px;min-width:0}
