@@ -1,0 +1,14 @@
+<section class="inline-calculator" aria-labelledby="quick-calc-title">
+  <h3 id="quick-calc-title">Try the calculation</h3>
+  <p>Enter the depth and rate from your quotation. The estimate updates as you type.</p>
+  <div class="quick-calc-fields">
+    <label for="quick-depth">Depth (feet)
+      <input id="quick-depth" type="number" min="0" max="100000" step="any" value="500" inputmode="decimal">
+    </label>
+    <label for="quick-rate">Rate (₹ per foot)
+      <input id="quick-rate" type="number" min="0" max="10000000" step="any" value="120" inputmode="decimal">
+    </label>
+  </div>
+  <p class="quick-calc-result">Basic drilling charge: <output id="quick-total" for="quick-depth quick-rate">₹60,000</output></p>
+  <p class="quick-calc-note">Drilling only. Casing, transport, pump and other charges may be extra. This is your calculation, not a market-price estimate.</p>
+</section>
