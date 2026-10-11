@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ .Description | default .Site.Params.description }}">
   <title>{{ if .IsHome }}{{ .Site.Title }} — Practical Borewell Planning{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/style.css?v=3" | relURL }}">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ if and .IsPage (eq .Section "guides") }}
   <script src="{{ "js/toc.js" | relURL }}" defer></script>
