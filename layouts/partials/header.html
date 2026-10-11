@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }} home">
+      <span class="brand-mark" aria-hidden="true">BG</span>
+      <span>{{ .Site.Title }}</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="{{ .Site.Home.RelPermalink }}">Home</a>
+      <a href="{{ "guides/" | relURL }}">Guides</a>
+    </nav>
+  </div>
+</header>
