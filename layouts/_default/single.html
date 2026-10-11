@@ -1,6 +1,14 @@
 {{ define "main" }}
 <div class="container article-layout">
   <article class="article">
+    {{ if eq .File.ContentBaseName "how-is-borewell-drilling-cost-calculated-india" }}
+    <figure class="article-infographic">
+      <a href="{{ "images/borewell-drilling-cost-infographic.svg" | relURL }}" aria-label="Open the borewell drilling cost infographic at full size">
+        <img src="{{ "images/borewell-drilling-cost-infographic.svg" | relURL }}" alt="Infographic showing borewell depth and diameter, the formula depth multiplied by rate per foot, a hypothetical 500-foot example at ₹120 per foot equalling ₹60,000, and possible additional costs." width="1200" height="820" fetchpriority="high">
+      </a>
+      <figcaption>Visual guide: the drilling charge is only one part of the total project cost. <a href="{{ "images/borewell-drilling-cost-infographic.svg" | relURL }}">Open infographic</a></figcaption>
+    </figure>
+    {{ end }}
     <p class="eyebrow"><a href="{{ "guides/" | relURL }}">Guides</a></p>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
@@ -17,6 +25,12 @@
   <aside class="article-toc" aria-label="On this page">
     <p class="toc-title">On this page</p>
     {{ .TableOfContents }}
+    <div class="toc-resources" aria-label="Related tools and resources">
+      <p class="toc-title">Tools &amp; resources</p>
+      <a class="resource-link" href="{{ "tools/borewell-cost-calculator.html" | relURL }}"><strong>Open cost calculator</strong><span>Calculate drilling and additional costs using your own quote.</span></a>
+      <a class="resource-link" href="{{ "images/borewell-drilling-cost-infographic.svg" | relURL }}"><strong>View infographic</strong><span>Open the visual guide at full size.</span></a>
+      <a class="resource-link" href="{{ "guides/" | relURL }}"><strong>All guides</strong><span>Browse other borewell planning articles.</span></a>
+    </div>
   </aside>
   {{ end }}
 </div>
