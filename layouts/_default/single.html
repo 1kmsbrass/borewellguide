@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="container article">
+  <p class="eyebrow"><a href="{{ "guides/" | relURL }}">Guides</a></p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  {{ with .Date }}<p class="meta">Last updated: {{ $.Lastmod.Format "2 January 2006" }}</p>{{ end }}
+  <div class="article-content">{{ .Content }}</div>
+  {{ with .Params.sources }}
+  <section class="sources">
+    <h2>Sources</h2>
+    <ul>{{ range . }}<li><a href="{{ .url }}" rel="noopener noreferrer">{{ .title }}</a>{{ with .date }} — {{ . }}{{ end }}</li>{{ end }}</ul>
+  </section>
+  {{ else }}
+  <p class="caution">No external sources are listed for this page. Treat it as general guidance, not location-specific research.</p>
+  {{ end }}
+</article>
+{{ end }}
