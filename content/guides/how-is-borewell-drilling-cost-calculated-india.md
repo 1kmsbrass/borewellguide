@@ -37,6 +37,8 @@ The simplest calculation is:
 
 **Drilling cost = Total depth × Rate per foot**
 
+{{< borewell-calculator >}}
+
 Suppose a contractor quotes ₹120 per foot and the borewell reaches a depth of 500 feet.
 
 | Item | Calculation | Amount |
