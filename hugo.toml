@@ -1,4 +1,4 @@
-baseURL = "https://example.org/"
+baseURL = "https://borewellguide.pages.dev/"
 languageCode = "en-IN"
 title = "Borewell Guide"
 enableRobotsTXT = true
@@ -6,4 +6,9 @@ enableRobotsTXT = true
 [params]
   description = "Practical information for planning a borewell in India."
   siteName = "Borewell Guide"
-  contactText = "Planning a borewell? Speak with local, experienced professionals before deciding."
+  # Contact details must be added only after the real number and address are confirmed.
+  phone = ""
+  whatsapp = ""
+  address = ""
+  openingHours = ""
+  showPrices = false
