@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Calculate a hypothetical borewell drilling estimate from depth, rates and additional costs.">
+<title>Borewell Cost Calculator | Borewell Guide</title>
+<style>
+:root{color-scheme:light;--ink:#172c3c;--muted:#40596a;--paper:#f6f9f5;--line:#d5e1e5;--green:#176b45;--blue:#1769aa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:#075b46;text-underline-offset:3px}a:focus-visible,input:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #b47700;outline-offset:3px}.wrap{width:min(980px,calc(100% - 32px));margin:auto}.top{padding:24px 0;background:#e8f3f8;border-bottom:1px solid var(--line)}.top a{font-weight:700}.top h1{font-size:clamp(2rem,5vw,3rem);line-height:1.12;margin:16px 0 8px;letter-spacing:-.035em}.lead{max-width:720px;color:#304b5b}.layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:28px;align-items:start;padding-top:28px;padding-bottom:60px}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:20px}.panel h2{margin:0 0 12px;font-size:1.35rem}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-weight:700}.field small{color:var(--muted);font-size:.85rem}.field input,.field select{font:inherit;min-height:48px;width:100%;border:1px solid #aebfc8;border-radius:6px;padding:9px 11px;background:white;color:var(--ink)}.costs{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}.results{position:sticky;top:18px;background:#e8f4eb;border:1px solid #c9e0cf;border-radius:12px;padding:20px}.results h2{font-size:1.05rem;margin:0}.total{font-size:2.2rem;font-weight:850;color:var(--green);letter-spacing:-.04em;margin:4px 0 12px;overflow-wrap:anywhere}.breakdown{border-top:1px solid #bfd6c5;padding-top:12px}.line{display:flex;justify-content:space-between;gap:14px;padding:6px 0;border-bottom:1px solid #d3e6d7}.line span:first-child{overflow-wrap:anywhere}.line strong{white-space:nowrap}.line.grand{font-weight:800;font-size:1.05rem;border-bottom:0;padding-top:12px}.note{font-size:.9rem;color:#40596a}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}button,.button{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:10px 16px;border-radius:6px;border:1px solid #145943;background:#145943;color:white;font:inherit;font-weight:750;cursor:pointer;text-decoration:none}button.secondary,.button.secondary{background:white;color:#145943}.formula{background:#e8f3ff;border-radius:8px;padding:12px 14px;font-weight:750}.callout{background:#fff4d8;border-radius:8px;padding:12px 14px;margin-top:16px;font-size:.9rem}.footer{border-top:1px solid var(--line);padding:20px 0;background:#fff;font-size:.9rem}.side{display:grid;gap:14px}.side a{display:block;background:#fff;border:1px solid var(--line);padding:14px;border-radius:8px;text-decoration:none;font-weight:700}.side a span{display:block;font-size:.88rem;font-weight:400;color:var(--muted)}@media(max-width:760px){.layout{grid-template-columns:1fr}.results{position:static;order:-1}.grid{grid-template-columns:1fr 1fr}}@media(max-width:420px){.grid{grid-template-columns:1fr}.panel{padding:16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a href="../../">← Borewell Guide</a><h1>Borewell Cost Calculator</h1><p class="lead">Enter a contractor’s quoted depth and rates to calculate a transparent estimate. The figures you enter are your own inputs—not a market-price prediction.</p></div></header>
+<main class="wrap layout">
+<section>
+<form id="calc-form">
+<div class="panel">
+<h2>1. Basic drilling charge</h2>
+<div class="grid">
+<div class="field"><label for="depth">Total drilling depth (feet)</label><input id="depth" name="depth" type="number" min="0" max="100000" step="0.1" value="500" inputmode="decimal" required><small>Use the depth in the contractor’s quote.</small></div>
+<div class="field"><label for="rate">Rate per foot (₹)</label><input id="rate" name="rate" type="number" min="0" max="10000000" step="0.01" value="120" inputmode="decimal" required><small>Enter the rate you were quoted.</small></div>
+<div class="field"><label for="diameter">Diameter (inches, optional)</label><input id="diameter" name="diameter" type="number" min="0" max="100" step="0.1" placeholder="e.g. 6" inputmode="decimal"><small>Recorded for comparison; not used in this formula.</small></div>
+<div class="field"><label for="tax">Tax / other percentage (optional)</label><input id="tax" name="tax" type="number" min="0" max="100" step="0.1" value="0" inputmode="decimal"><small>Only enter a percentage if it applies to your quoted subtotal.</small></div>
+</div>
+<div class="costs"><h2>2. Different rates at depth ranges (optional)</h2><p class="note">Turn this on only if the contractor’s written quote uses slabs. Each slab rate applies to the feet entered for that slab. The slab depths must add up to the total depth.</p>
+<div class="field"><label for="useSlabs"><span><input id="useSlabs" type="checkbox" style="width:20px;min-height:20px;vertical-align:middle"> Use depth-based rate slabs</span></label></div>
+<div id="slabs" hidden>
+<div class="grid" style="margin-top:12px">
+<div class="field"><label for="feet1">Slab 1 depth (ft)</label><input id="feet1" type="number" min="0" step="0.1" value="200"></div>
+<div class="field"><label for="rate1">Slab 1 rate (₹/ft)</label><input id="rate1" type="number" min="0" step="0.01" value="100"></div>
+<div class="field"><label for="feet2">Slab 2 depth (ft)</label><input id="feet2" type="number" min="0" step="0.1" value="200"></div>
+<div class="field"><label for="rate2">Slab 2 rate (₹/ft)</label><input id="rate2" type="number" min="0" step="0.01" value="120"></div>
+<div class="field"><label for="feet3">Slab 3 depth (ft)</label><input id="feet3" type="number" min="0" step="0.1" value="100"></div>
+<div class="field"><label for="rate3">Slab 3 rate (₹/ft)</label><input id="rate3" type="number" min="0" step="0.01" value="140"></div>
+</div>
+<p id="slabStatus" class="note" aria-live="polite"></p>
+</div></div>
+<div class="costs"><h2>3. Additional costs (optional)</h2><p class="note">Enter only costs that are not already included in the drilling rate. Leave unknown costs at zero and replace them when you receive a quote.</p>
+<div class="grid">
+<div class="field"><label for="casing">Casing pipes (₹)</label><input id="casing" type="number" min="0" step="1" value="0" inputmode="decimal"></div>
+<div class="field"><label for="transport">Rig transport / mobilisation (₹)</label><input id="transport" type="number" min="0" step="1" value="0" inputmode="decimal"></div>
+<div class="field"><label for="flushing">Flushing / cleaning (₹)</label><input id="flushing" type="number" min="0" step="1" value="0" inputmode="decimal"></div>
+<div class="field"><label for="pump">Pump and installation (₹)</label><input id="pump" type="number" min="0" step="1" value="0" inputmode="decimal"></div>
+<div class="field"><label for="other">Other site expenses (₹)</label><input id="other" type="number" min="0" step="1" value="0" inputmode="decimal"></div>
+</div></div>
+<div class="actions"><button type="submit">Calculate estimate</button><button class="secondary" id="reset" type="reset">Reset values</button><button class="secondary" id="print" type="button">Print estimate</button></div>
+<p id="status" class="note" role="status" aria-live="polite"></p>
+</div>
+</form>
+<div class="panel"><h2>How to use this estimate</h2><p>For a single rate, the basic charge is total depth multiplied by the quoted rate per foot. For rate slabs, calculate each slab separately and add the results. Additional charges are then added only if they are outside the quoted drilling charge.</p><p class="formula">Estimated total = drilling charge + extra costs + entered tax/percentage</p><p class="note">This tool performs arithmetic only. It cannot predict groundwater, recommend a safe drilling depth, validate a contractor’s quote, or guarantee that water will be found. Confirm what each charge includes and whether tax applies before relying on the total.</p></div>
+</section>
+<aside class="results" aria-labelledby="result-title"><h2 id="result-title">Estimated project cost</h2><div class="total" id="total" aria-live="polite">₹60,000</div><div class="breakdown" id="breakdown"><div class="line"><span>Basic drilling charge</span><strong>₹60,000</strong></div><div class="line grand"><span>Total estimate</span><strong>₹60,000</strong></div></div><div class="callout">Illustrative estimate based only on your inputs. Actual costs depend on the written scope, site and contractor. This is not a current market quote.</div></aside>
+<aside class="side" aria-label="Related resources"><a href="../../guides/how-is-borewell-drilling-cost-calculated-india/">Read the article<span>Understand the calculation and compare quotations.</span></a><a href="../../images/borewell-drilling-cost-infographic.svg">View the infographic<span>Open the visual guide.</span></a><a href="../../guides/">All guides<span>Browse the Borewell Guide library.</span></a></aside>
+</main>
+<footer class="footer"><div class="wrap">Borewell Guide · General information only. No advertising trackers or third-party analytics are used.</div></footer>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const ids = ["depth","rate","diameter","tax","feet1","rate1","feet2","rate2","feet3","rate3","casing","transport","flushing","pump","other"];
+  const money = (n) => new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:2}).format(n);
+  const number = (id) => { const v = Number($(id).value); return Number.isFinite(v) && v >= 0 ? v : 0; };
+  const label = (text, amount) => '<div class="line"><span>'+text+'</span><strong>'+money(amount)+'</strong></div>';
+  function calculate() {
+    const depth=number("depth"), rate=number("rate"), useSlabs=$("useSlabs").checked;
+    let drilling=depth*rate, slabFeet=0, html="";
+    if (useSlabs) {
+      slabFeet=number("feet1")+number("feet2")+number("feet3");
+      const mismatch=Math.abs(slabFeet-depth)>0.01;
+      $("slabStatus").textContent=mismatch ? "Slab depths total "+slabFeet+" ft; they must equal the total depth ("+depth+" ft)." : "Slab depths match the total depth.";
+      $("slabStatus").style.color=mismatch ? "#9a3412" : "#176b45";
+      drilling=number("feet1")*number("rate1")+number("feet2")*number("rate2")+number("feet3")*number("rate3");
+      html+=label("Slab 1 ("+number("feet1")+" ft × "+money(number("rate1"))+"/ft)",number("feet1")*number("rate1"));
+      html+=label("Slab 2 ("+number("feet2")+" ft × "+money(number("rate2"))+"/ft)",number("feet2")*number("rate2"));
+      html+=label("Slab 3 ("+number("feet3")+" ft × "+money(number("rate3"))+"/ft)",number("feet3")*number("rate3"));
+    } else {
+      $("slabStatus").textContent="";
+      html+=label("Drilling ("+depth+" ft × "+money(rate)+"/ft)",drilling);
+    }
+    const extras=[["Casing pipes","casing"],["Rig transport / mobilisation","transport"],["Flushing / cleaning","flushing"],["Pump and installation","pump"],["Other site expenses","other"]];
+    let extraTotal=0;
+    extras.forEach(([name,id])=>{const v=number(id);extraTotal+=v;if(v>0)html+=label(name,v);});
+    const subtotal=drilling+extraTotal, tax=subtotal*number("tax")/100, total=subtotal+tax;
+    if(tax>0) html+=label("Entered percentage ("+number("tax")+"%)",tax);
+    html+=label("Additional costs",extraTotal);
+    html+='<div class="line grand"><span>Total estimate</span><strong>'+money(total)+'</strong></div>';
+    $("total").textContent=money(total);
+    $("breakdown").innerHTML=html;
+    if(useSlabs && Math.abs(slabFeet-depth)>0.01) $("status").textContent="Check the slab depths: they do not add up to the total depth. The displayed figure is a draft calculation until corrected.";
+    else $("status").textContent="Estimate updated from the values entered.";
+  }
+  $("calc-form").addEventListener("input",calculate);
+  $("calc-form").addEventListener("change",calculate);
+  $("calc-form").addEventListener("submit",(e)=>{e.preventDefault();calculate();});
+  $("useSlabs").addEventListener("change",()=>{$("slabs").hidden=!$("useSlabs").checked;calculate();});
+  $("reset").addEventListener("click",()=>{setTimeout(()=>{$("slabs").hidden=!$("useSlabs").checked;calculate();},0);});
+  $("print").addEventListener("click",()=>window.print());
+  calculate();
+})();
+</script>
+</body>
+</html>
