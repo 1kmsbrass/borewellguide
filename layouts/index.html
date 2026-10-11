@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Borewell planning in India</p>
+      <h1>Understand the site. Compare the work. Plan the full cost.</h1>
+      <p class="lead">Borewell Guide helps homeowners, farmers and property owners prepare for drilling by understanding local evidence, contractor quotes and the costs beyond drilling.</p>
+      <a class="button" href="{{ "guides/" | relURL }}">Browse planning guides</a>
+      <p class="caution">No website can guarantee water or promise an exact successful depth. Results depend on site conditions.</p>
+    </div>
+    <aside class="checklist">
+      <h2>Before you drill</h2>
+      <ol>
+        <li><strong>Collect local evidence</strong><br>Nearby well performance, seasonal conditions and available geological information.</li>
+        <li><strong>Compare the scope</strong><br>Drilling method, rate unit, casing, flushing and extra charges.</li>
+        <li><strong>Budget the full project</strong><br>Pump, pipes, electrical work, transport and site preparation.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>Start with a practical question</h2>
+    <ul class="topic-list">
+      <li><a href="{{ "guides/" | relURL }}">What should I ask a borewell contractor?</a></li>
+      <li><a href="{{ "guides/" | relURL }}">Which costs can sit outside a drilling quote?</a></li>
+      <li><a href="{{ "guides/" | relURL }}">How should I assess claims about groundwater?</a></li>
+    </ul>
+    <p class="caution">Location-specific guidance will be published only when it can be supported by identifiable sources. General information is not a substitute for a site assessment.</p>
+  </div>
+</section>
+{{ end }}
