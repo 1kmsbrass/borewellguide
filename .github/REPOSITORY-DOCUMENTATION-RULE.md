@@ -16,6 +16,12 @@ Before creating or substantially updating substantive documentation:
 
 Use standard Markdown links, not Obsidian-only wikilinks as the sole link format. Apply this to documentation, specifications, architecture notes, operational instructions, research and project knowledge. Do not add link noise to source code, generated files, raw data rows or every individual content page. Preserve repository-specific navigation and purpose.
 
+## Descriptive filenames
+
+Canonical rule: [REPO-NAME-001 — Descriptive Documentation Filenames](https://github.com/1kmsbrass/rules/blob/main/rules/repository-work/descriptive-document-filenames.md).
+
+Keep the root `README.md` as the repository landing page. Give substantive documents descriptive lowercase kebab-case filenames and meaningful H1 headings. Keep nested README files only when they are genuine, concise folder indexes. When renaming, update and verify all inbound links. Preserve framework-required, generated and machine-consumed filenames.
+
 ## Personal voice and intellectual influence
 
 Canonical rule: [WRITING-VOICE-001 — Personal Voice and Intellectual Influence](https://github.com/1kmsbrass/rules/blob/main/rules/repository-work/personal-voice-and-intellectual-influence.md).
